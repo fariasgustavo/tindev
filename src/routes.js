@@ -1,12 +1,8 @@
 const express = require('express');
+const DevController = require('./controllers/DevController');
+
 const routes = express.Router();
 
-routes.get('/',(req,res) => {
-    return res.json({ message: "Root Route" });
-});
-
-routes.post('/devs',(req,res) => {
-    return res.json({ request: req.body });
-});
+routes.post('/devs', DevController.store);
 
 module.exports = routes;
