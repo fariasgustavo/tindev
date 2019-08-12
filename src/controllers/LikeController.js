@@ -6,14 +6,14 @@ module.exports = {
         const { devId } = req.params;
         const { userid } = req.headers;
 
-        const loggedDev = await Dev.findById(userid);
-        const targetDev = await Dev.findById(devId);
+        const loggedDev = await Dev.findById(devId);
+        const targetDev = await Dev.findById(userid);
 
         if(!targetDev)
             return res.status(400).json({ error: "Dev not found!" });
         
-        if(targetDev.likes.includes(userid))
-            return res.json({ message: 'Has matched' });
+        if(targetDev.likes.includes(devId))
+            console.log('has match');
 
         loggedDev.likes.push(targetDev._id);
         await loggedDev.save();

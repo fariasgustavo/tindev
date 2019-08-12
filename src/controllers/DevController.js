@@ -17,30 +17,26 @@ module.exports = {
         return res.json(users);
     },
 
-    async show(req,res){
-        const { username } = req.params;
-       
-        const hasUser = await Dev.findOne({ username: username });
-        
-        if(!hasUser){
-            return false;
-        }
-
-        return true;
-    },
-
     async store(req,res){
         const { username } = req.body;
+
+        if(username == ''){
+            return res.json({ error: "Enter your GitHub username" });
+        }
 
         let userExists = await Dev.findOne({ user: username });
 
         if(userExists){
-            return res.json({ message: 'User has exists!' });
+            return res.json(userExists);
         }
 
         const response = await axios.get(`https://api.github.com/users/${username}`);
-        const { name, bio, avatar_url: avatar } = response.data;
+        let { name, bio, avatar_url: avatar } = response.data;
 
+        if(name == null){
+            name = username
+        }
+    
         const stored = await Dev.create({
             name,
             user: username,
@@ -48,6 +44,6 @@ module.exports = {
             avatar
         });
 
-        return res.json({ message: stored });
+        return res.json(stored);
     }
 }
