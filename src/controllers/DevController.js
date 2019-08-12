@@ -17,6 +17,18 @@ module.exports = {
         return res.json(users);
     },
 
+    async show(req,res){
+        const { username } = req.params;
+       
+        const hasUser = await Dev.findOne({ username: username });
+        
+        if(!hasUser){
+            return false;
+        }
+
+        return true;
+    },
+
     async store(req,res){
         const { username } = req.body;
 

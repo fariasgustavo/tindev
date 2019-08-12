@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './pages/login';
+import Routes from './routes';
 import './reset.css';
 import './main.css';
 
-ReactDOM.render(<Login />, document.getElementById('root'));
+ReactDOM.render(<Routes />, document.getElementById('root'));
