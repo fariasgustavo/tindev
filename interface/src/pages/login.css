@@ -1,6 +1,0 @@
-div.container{ display: flex; justify-content: center; align-items: center; height: 100%; }
-
-form.login-form{ width: 100%; max-width: 300px; display: flex; flex-direction: column; }
-form.login-form input { border: 1px solid #ddd; padding: 0 10px; height: 34px; margin: 15px 0; color: #666666; border-radius: 4px; }
-form.login-form input::placeholder{ color: #999; }
-form.login-form button{ height: 36px; border: 1px solid #df4938; background-color: #df4938; color: #fff; font-weight: 800; text-transform: uppercase; }
