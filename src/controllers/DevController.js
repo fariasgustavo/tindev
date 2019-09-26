@@ -25,9 +25,8 @@ module.exports = {
         }
 
         let userExists = await Dev.findOne({ user: username });
-
         if(userExists){
-            return res.json(userExists);
+            return res.status(200).json(userExists);
         }
 
         const response = await axios.get(`https://api.github.com/users/${username}`);
@@ -44,6 +43,6 @@ module.exports = {
             avatar
         });
 
-        return res.json(stored);
+        return res.status(201).json(stored);
     }
 }
