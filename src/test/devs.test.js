@@ -1,17 +1,21 @@
-const dev = require('../controllers/DevController');
-const axios = require('axios');
+const request = require('../config/axios');
+
+require('dotenv').config({
+    path: process.env.ENVIRONMENT === 'test' ? './.env-test' : './.env'
+});
+
 const devModel = require('../models/Dev');
 
-console.log(process.env.ENVIRONMENT === 'test' ? './.env-test' : './.env');
+describe('store', () => {
+    beforeAll(() => {
+        devModel.deleteMany({},{});
+    });
 
-describe('store', function () {
     it('should store a new Dev', async () => {
-        devModel.deleteMany({});
-        
-        const store = await axios.post('/devs', {
+        const store = await request.post('/devs', {
             username: 'fariasgustavo'
         });
-        console.log(store);
-        expect();
+    
+        expect(store);
     });
 });

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ENVIRONMENT=test jest",
+    "test": "jest --detectOpenHandles",
     "start": "nodemon src/server.js --ignore test"
   },
   "author": "fariasgustavo",
