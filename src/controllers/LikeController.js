@@ -15,8 +15,10 @@ module.exports = {
         if(targetDev.likes.includes(devId))
             console.log('has match');
 
-        loggedDev.likes.push(targetDev._id);
-        await loggedDev.save();
+        if(loggedDev.likes.indexOf(targetDev._id) == -1 ){
+            loggedDev.likes.push(targetDev._id);
+            await loggedDev.save();
+        }
 
         return res.json({ loggedDev });
     }
